@@ -59,7 +59,7 @@ Now you’re ready to run the chat script. Start the chat session by executing:
 
 To exit the chat, simply type exit at any prompt, and the session will end.
 
-Example Chat Session
+### Example Chat Session
 
 ```bash
 $ ./chat.sh
@@ -73,7 +73,7 @@ You: exit
 Goodbye!
 ```
 
-##Troubleshooting
+## Troubleshooting
 
 - API Errors: If the script fails to fetch responses, check your API key and ensure it is valid.
 - Response Formatting: The script includes basic string formatting to clean up the assistant’s responses, removing unnecessary spaces before punctuation.
