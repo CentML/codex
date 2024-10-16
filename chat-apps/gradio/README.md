@@ -16,7 +16,20 @@ Before running the app, ensure that you have the following:
 3. A valid **CentML API key**. The API key should be stored in an environment variable called `CENTML_API_KEY`.
 
 ## Usage
+### Docker File
 
+1. Docker
+```bash
+export CENTML_API_KEY="your-api-key-here"
+docker build -t gradio-app .   
+docker run -p 7860:7860 -e CENTML_API_KEY=${CENTML_API_KEY} gradio-app
+```
+
+2. Open Browser
+- navigate to 
+http://localhost:7860
+
+### Local
 1. Enter chat-apps/gradio directory
 
 ```bash
