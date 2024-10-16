@@ -69,12 +69,12 @@ This will launch a local Gradio interface in your browser. If the app doesn’t 
 
 ## Customization
 
-	•	Model: If you want to change the model or parameters such as temperature or max_tokens, you can modify the data dictionary in the send_message function in app.py.
-	•	UI Layout: You can adjust the layout of the interface by modifying the Gradio components in the gr.Blocks section.
+- Model: If you want to change the model or parameters such as temperature or max_tokens, you can modify the data dictionary in the send_message function in app.py.
+- UI Layout: You can adjust the layout of the interface by modifying the Gradio components in the gr.Blocks section.
 
 ## Troubleshooting
 
-	•	Error Connecting to API: If you encounter an error connecting to the CentML API, ensure that your API key is valid and set in the environment variable CENTML_API_KEY.
-	•	Python Version: Ensure you are using Python 3.8 or higher.
-	•	Dependencies: Make sure you have installed all the necessary dependencies (Gradio and Requests).
+- Error Connecting to API: If you encounter an error connecting to the CentML API, ensure that your API key is valid and set in the environment variable CENTML_API_KEY.
+- Python Version: Ensure you are using Python 3.8 or higher.
+- Dependencies: Make sure you have installed all the necessary dependencies (Gradio and Requests).
 
