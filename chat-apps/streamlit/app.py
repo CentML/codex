@@ -29,7 +29,7 @@ def stream_response(user_message):
         "temperature": 0.7,
         "top_p": 1,
         "n": 1,
-        "max_tokens": 100,
+        "max_tokens": 2000,
         "stream": True,
         "presence_penalty": 0,
         "frequency_penalty": 0,

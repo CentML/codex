@@ -30,7 +30,7 @@ function llama_chat() {
             temperature: 0.7,
             top_p: 1,
             n: 1,
-            max_tokens: 1000,
+            max_tokens: 2000,
             stream: true,
             presence_penalty: 0,
             frequency_penalty: 0,

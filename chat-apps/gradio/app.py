@@ -24,7 +24,7 @@ def send_message(user_input):
             {"role": "system", "content": "You are helpful."},
             {"role": "user", "content": user_input}
         ],
-        "max_tokens": 512,
+        "max_tokens": 2000,
         "temperature": 0.7,
         "top_p": 1,
         "n": 1,

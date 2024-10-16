@@ -44,7 +44,7 @@ class ChatViewModel: ObservableObject {
                 ["role": "system", "content": "You are helpful"],
                 ["role": "user", "content": userMessage]
             ],
-            "max_tokens": 512,
+            "max_tokens": 2000,
             "n": 1,
             "stream": true,
             "temperature": 0.7,
