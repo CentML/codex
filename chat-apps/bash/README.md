@@ -4,9 +4,11 @@ This Bash script interacts with the LLaMA model via CentML’s serverless API to
 
 ## Features
 
-•	Continuously streams responses from the CentML API.
-•	Keeps track of the conversation history between the user and the assistant.
-•	Supports dynamic interaction and real-time updates with each message.
+- Continuously streams responses from the CentML API.
+
+- Keeps track of the conversation history between the user and the assistant.
+
+- Supports dynamic interaction and real-time updates with each message.
 
 ## Prerequisites
 
