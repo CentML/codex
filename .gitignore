@@ -1,0 +1,18 @@
+# Ignore Python virtual environments
+venv/
+.env/
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore all directories ending in .gradio, .xxx, and .yyy
+*.gradio/
+*.*/
+
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.swp
