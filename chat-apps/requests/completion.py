@@ -13,7 +13,11 @@ endpoint = "https://api.centml.com/openai/v1/chat/completions"
 data = {
     "model": "meta-llama/Meta-Llama-3-8B-Instruct",
     "messages": [
-        {"role": "system", "content": "You are helpful."}
+        {"role":"system","content":"you are helpful"},
+        {"role":"user","content":"Hello"},
+        {"role":"assistant","content":"Hello! It's nice to meet you. Is there something I can help you with or would you like to chat about something in particular? I'm here to lend a listening ear and offer assistance if needed."},
+        {"role":"user","content":"Your Next Mesage Here"}
+
     ],
     "max_tokens": 512,
     "temperature": 0.7,
