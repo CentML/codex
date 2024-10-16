@@ -75,7 +75,7 @@ Goodbye!
 
 ##Troubleshooting
 
-	•	API Errors: If the script fails to fetch responses, check your API key and ensure it is valid.
-	•	Response Formatting: The script includes basic string formatting to clean up the assistant’s responses, removing unnecessary spaces before punctuation.
-	•	Missing jq: Make sure you have jq installed. If not, the script will fail when handling JSON responses.
+- API Errors: If the script fails to fetch responses, check your API key and ensure it is valid.
+- Response Formatting: The script includes basic string formatting to clean up the assistant’s responses, removing unnecessary spaces before punctuation.
+- Missing jq: Make sure you have jq installed. If not, the script will fail when handling JSON responses.
 
