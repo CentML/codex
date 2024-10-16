@@ -4,16 +4,16 @@ This Bash script interacts with the LLaMA model via CentML’s serverless API to
 
 ## Features
 
-	•	Continuously streams responses from the CentML API.
-	•	Keeps track of the conversation history between the user and the assistant.
-	•	Supports dynamic interaction and real-time updates with each message.
+•	Continuously streams responses from the CentML API.
+•	Keeps track of the conversation history between the user and the assistant.
+•	Supports dynamic interaction and real-time updates with each message.
 
 ## Prerequisites
 
 Before running the script, ensure that you have:
 
-	1.	A valid CentML API key.
-	2.	jq installed on your system (for JSON manipulation). You can install it using:
+1.	A valid CentML API key.
+2.	jq installed on your system (for JSON manipulation). You can install it using:
 
 ```bash
 sudo apt-get install jq    # On Ubuntu/Debian
