@@ -1,7 +1,43 @@
 #!/bin/bash
+# ASCII Art Banner
+function print_banner() {
+    echo """ 
+                                                                                                                                             
+                                                                                                                                         
+        CCCCCCCCCCCCC                                               tttt          MMMMMMMM               MMMMMMMMLLLLLLLLLLL             
+     CCC::::::::::::C                                            ttt:::t          M:::::::M             M:::::::ML:::::::::L             
+   CC:::::::::::::::C                                            t:::::t          M::::::::M           M::::::::ML:::::::::L             
+  C:::::CCCCCCCC::::C                                            t:::::t          M:::::::::M         M:::::::::MLL:::::::LL             
+ C:::::C       CCCCCC    eeeeeeeeeeee    nnnn  nnnnnnnn    ttttttt:::::ttttttt    M::::::::::M       M::::::::::M  L:::::L               
+C:::::C                ee::::::::::::ee  n:::nn::::::::nn  t:::::::::::::::::t    M:::::::::::M     M:::::::::::M  L:::::L               
+C:::::C               e::::::eeeee:::::een::::::::::::::nn t:::::::::::::::::t    M:::::::M::::M   M::::M:::::::M  L:::::L               
+C:::::C              e::::::e     e:::::enn:::::::::::::::ntttttt:::::::tttttt    M::::::M M::::M M::::M M::::::M  L:::::L               
+C:::::C              e:::::::eeeee::::::e  n:::::nnnn:::::n      t:::::t          M::::::M  M::::M::::M  M::::::M  L:::::L               
+C:::::C              e:::::::::::::::::e   n::::n    n::::n      t:::::t          M::::::M   M:::::::M   M::::::M  L:::::L               
+C:::::C              e::::::eeeeeeeeeee    n::::n    n::::n      t:::::t          M::::::M    M:::::M    M::::::M  L:::::L               
+ C:::::C       CCCCCCe:::::::e             n::::n    n::::n      t:::::t    ttttttM::::::M     MMMMM     M::::::M  L:::::L         LLLLLL
+  C:::::CCCCCCCC::::Ce::::::::e            n::::n    n::::n      t::::::tttt:::::tM::::::M               M::::::MLL:::::::LLLLLLLLL:::::L
+   CC:::::::::::::::C e::::::::eeeeeeee    n::::n    n::::n      tt::::::::::::::tM::::::M               M::::::ML::::::::::::::::::::::L
+     CCC::::::::::::C  ee:::::::::::::e    n::::n    n::::n        tt:::::::::::ttM::::::M               M::::::ML::::::::::::::::::::::L
+        CCCCCCCCCCCCC    eeeeeeeeeeeeee    nnnnnn    nnnnnn          ttttttttttt  MMMMMMMM               MMMMMMMMLLLLLLLLLLLLLLLLLLLLLLLL
+                                                                                                                                         
+                                                                                                                                         
+                                                                                                                                         
+                                                                                                                                         
+                                                                                                                                         
+                                                                                                                                         
+                                                                                                                                         
+
+    """
+    echo "                                   Chat with LLaMA - Powered by CentML API    "
+    echo "=============================================================================================================================="
+}
 
 # Function to interact with the LLaMA API and stream responses
 function llama_chat() {
+    # Print ASCII art banner
+    print_banner
+
     # Initialize an array to store the conversation history
     messages=(
         '{"role": "system", "content": "You are a helpful assistant."}'
