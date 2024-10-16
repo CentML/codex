@@ -10,7 +10,7 @@ This directory contains various implementations of AI-based chat applications us
 - Suitable for lightweight terminal-based chat applications or command-line scripting.
 - Simple and easy to integrate with other bash utilities.
 
-### Technologies: Bash, curl
+##### Technologies: Bash, curl
 
 2. gradio
 
@@ -18,7 +18,7 @@ This directory contains various implementations of AI-based chat applications us
 - Gradio provides an easy-to-use UI for AI applications without requiring any frontend development experience.
 - Quickly launch interactive demos directly in the browser.
 
-### Technologies: Python, Gradio
+##### Technologies: Python, Gradio
 
 3. html
 
@@ -26,7 +26,7 @@ This directory contains various implementations of AI-based chat applications us
 - Can be easily integrated into any web project or embedded in a web page for simple interactions.
 - Includes basic UI for sending and receiving messages in a browser environment.
 
-### Technologies: HTML, JavaScript, CSS
+##### Technologies: HTML, JavaScript, CSS
 
 4. openai
 
@@ -34,7 +34,7 @@ This directory contains various implementations of AI-based chat applications us
 - The implementation includes managing API calls for completions and streaming chat responses.
 - Works well for those already using OpenAI’s libraries and models.
 
-### Technologies: Python, OpenAI API
+##### Technologies: Python, OpenAI API
 
 5. requests
 
@@ -42,7 +42,7 @@ This directory contains various implementations of AI-based chat applications us
 - Provides a simple yet powerful way to make HTTP requests, handle responses, and build a command-line or script-based chat interface.
 - Suitable for those who want minimal dependencies.
 
-### Technologies: Python, requests library
+##### Technologies: Python, requests library
 
 6. streamlit
 
@@ -50,7 +50,7 @@ This directory contains various implementations of AI-based chat applications us
 - Provides a rich UI for chat applications with minimal code and fast deployment.
 - Allows for easy real-time interaction, text input, and response streaming.
 
-### Technologies: Python, Streamlit
+##### Technologies: Python, Streamlit
 
 7. swift
 
@@ -58,7 +58,7 @@ This directory contains various implementations of AI-based chat applications us
 - Provides a mobile-friendly or macOS-compatible chat experience with real-time streaming of responses.
 - Ideal for iOS/macOS developers looking to build native AI chat applications.
 
-### Technologies: Swift, SwiftUI
+##### Technologies: Swift, SwiftUI
 
 ## Usage
 
