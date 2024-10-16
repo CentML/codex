@@ -36,13 +36,13 @@ http://localhost:7860
    cd chat-apps/gradio-centml-chat
 ```
 
-	2.	Set up a virtual environment (optional but recommended):
+2.	Set up a virtual environment (optional but recommended):
 ```bash
 python -m venv venv
 source venv/bin/activate 
 ```
 
-	3.	Install the required dependencies:
+3.	Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -51,7 +51,7 @@ Note: If you don’t have/can't find a requirements.txt file, you can install th
 pip install gradio requests
 ```
 
-	4.	Set the CentML API key as an environment variable:
+4.	Set the CentML API key as an environment variable:
 ```bash
 export CENTML_API_KEY="your-api-key-here"
 ```
