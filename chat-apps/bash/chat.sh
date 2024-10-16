@@ -21,16 +21,10 @@ C:::::C              e::::::eeeeeeeeeee    n::::n    n::::n      t:::::t        
      CCC::::::::::::C  ee:::::::::::::e    n::::n    n::::n        tt:::::::::::ttM::::::M               M::::::ML::::::::::::::::::::::L
         CCCCCCCCCCCCC    eeeeeeeeeeeeee    nnnnnn    nnnnnn          ttttttttttt  MMMMMMMM               MMMMMMMMLLLLLLLLLLLLLLLLLLLLLLLL
                                                                                                                                          
-                                                                                                                                         
-                                                                                                                                         
-                                                                                                                                         
-                                                                                                                                         
-                                                                                                                                         
-                                                                                                                                         
 
     """
-    echo "                                   Chat with LLaMA - Powered by CentML API    "
-    echo "=============================================================================================================================="
+    echo "                                              Chat with LLaMA - Powered by CentML API    "
+    echo "============================================================================================================================================"
 }
 
 # Function to interact with the LLaMA API and stream responses
