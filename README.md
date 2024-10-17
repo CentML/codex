@@ -10,7 +10,7 @@ apps that showcase advanced and general features integrating with CentML endpoin
 
 
 
-![text to speech](image.png)
+![text to speech](images/image.png)
 
-![image generation](image-1.png)
+![image generation](images/image-1.png)
 
