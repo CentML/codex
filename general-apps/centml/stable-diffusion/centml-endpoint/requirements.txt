@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+diffusers
+transformers
+accelerate
+protobuf
+sentencepiece
