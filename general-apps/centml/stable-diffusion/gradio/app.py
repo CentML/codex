@@ -7,7 +7,7 @@ import json
 
 
 # Define the API URL
-API_URL = "https://baseapi2.user-1352.c-01.centml.com/generate"
+API_URL = "https://{endpoint_url}/generate"
 
 
 def generate_image_from_api(prompt):
