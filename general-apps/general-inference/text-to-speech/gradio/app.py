@@ -2,18 +2,13 @@ import os
 import requests
 import gradio as gr
 
-# Placeholder API Key (Replace with actual API key)
-api_key = os.getenv("CENTML_API_KEY")
-if not api_key:
-    raise ValueError("CENTML_API_KEY environment variable is not set.")
-
 # Placeholder API URL for Text-to-Speech (replace with actual URL)
-TTS_URL = "https://api.text-to-speech-service.com/v1/synthesize"
+TTS_URL = "http://localhost:8000/text-to-speech"
 
 # Function to send text to the TTS API
 def text_to_speech(text, voice="en-US"):
     headers = {
-        "Authorization": f"Bearer {api_key}",
+       
         "Content-Type": "application/json"
     }
     

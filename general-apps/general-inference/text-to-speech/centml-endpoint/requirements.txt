@@ -1,8 +1,4 @@
-fastapi
+
+gtts 
+fastapi 
 uvicorn
-transformers
-torch
-scipy
-datasets
-soundfile
-sentencepiece
