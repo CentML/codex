@@ -21,5 +21,5 @@ ENV CENTML_API_KEY=<your_api_key>
 ENV BASE_URL=https://api.centml.com
 ENV MODEL_NAME=meta-llama/Meta-Llama-3-8B-Instruct
 
-# Run the Basic Chat Gradio app
+# Run the LLM Debate Gradio app
 CMD ["python", "app.py"]
