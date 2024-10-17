@@ -53,7 +53,7 @@ function llama_chat() {
         # Prepare the JSON payload with jq to ensure proper JSON formatting
         json_payload=$(jq -n \
           --argjson messages "$(printf '%s\n' "${messages[@]}" | jq -s .)" \
-          --arg model "meta-llama/Meta-Llama-3-8B-Instruct" \
+          --arg model "meta-llama/Llama-3.1-405B-Instruct-FP8" \
           '{
             model: $model,
             messages: $messages,

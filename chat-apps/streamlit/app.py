@@ -24,7 +24,7 @@ def stream_response(user_message):
     messages = st.session_state.chat_history + [{"role": "user", "content": user_message}]
 
     data = {
-        "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "model": "meta-llama/Llama-3.1-405B-Instruct-FP8",
         "messages": messages,
         "temperature": 0.7,
         "top_p": 1,

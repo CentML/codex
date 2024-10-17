@@ -11,7 +11,7 @@ client = OpenAI(
 )
 
 completion = client.chat.completions.create(
-    model="meta-llama/Meta-Llama-3-8B-Instruct",
+    model="meta-llama/Llama-3.1-405B-Instruct-FP8",
     messages=[{"role":"system","content":"you are helpful"}],
     max_tokens=2000,
     temperature=0.7,

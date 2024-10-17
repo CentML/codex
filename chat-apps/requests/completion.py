@@ -11,7 +11,7 @@ endpoint = "https://api.centml.com/openai/v1/chat/completions"
 
 # Define the payload for the request
 data = {
-    "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "model": "meta-llama/Llama-3.1-405B-Instruct-FP8",
     "messages": [
         {"role":"system","content":"you are helpful"},
         {"role":"user","content":"Hello"},

@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+transformers
+torch
+scipy
+datasets
+soundfile
+sentencepiece
