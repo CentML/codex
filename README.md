@@ -6,4 +6,11 @@ A collection of integration examples for CentML. This repository serves as a res
 chat-apps directory contains various examples of chat implementations leveraging CentML API. 
 
 # General Apps
-apps that showcase advanced and general features integrating with CentML endpoints/compute/llm serving
+apps that showcase advanced and general features integrating with CentML endpoints / compute / llm serving
+
+
+
+![text to speech](image.png)
+
+![image generation](image-1.png)
+
