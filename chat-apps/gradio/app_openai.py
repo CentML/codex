@@ -10,7 +10,7 @@ if not api_key:
 # Initialize the OpenAI client with CentML's serverless API
 client = OpenAI(
     api_key=api_key,
-    base_url="https://api.centml.com/openai/v1/chat/completions",
+    base_url="https://api.centml.com/openai/v1",
 )
 
 # Function to send a message to the CentML API and stream the response
