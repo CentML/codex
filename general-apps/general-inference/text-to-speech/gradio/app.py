@@ -3,10 +3,10 @@ import requests
 import gradio as gr
 
 # Placeholder API URL for Text-to-Speech (replace with actual URL)
-TTS_URL = "http://localhost:8000/text-to-speech"
+TTS_URL = "https://{ENDPOINT_URL}/text-to-speech/" #REPLACE ENDPOINT_URL
 
 # Function to send text to the TTS API
-def text_to_speech(text, voice="en-US"):
+def text_to_speech(text, voice):
     headers = {
        
         "Content-Type": "application/json"
@@ -14,7 +14,7 @@ def text_to_speech(text, voice="en-US"):
     
     data = {
         "text": text,
-        "voice": voice,  # Voice configuration if supported
+        "voice": voice ,  # Voice configuration if supported
         "format": "mp3"  # Return as MP3 format
     }
 

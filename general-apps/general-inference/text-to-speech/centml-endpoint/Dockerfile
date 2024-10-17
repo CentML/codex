@@ -10,6 +10,8 @@ COPY . /app
 # Install any necessary dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Create a new user to run the application required for centml endpoints
+ARG USERNAME="centml"
 #Required for container to run on CentML
 RUN useradd -u 1024 -m -d /home/${USERNAME} -s /bin/bash ${USERNAME} && chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
 USER 1024
