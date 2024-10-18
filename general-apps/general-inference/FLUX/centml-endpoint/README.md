@@ -1,6 +1,6 @@
 # FLUX Endpoint for CentML
 
-This guide helps you deploy a Stable Diffusion endpoint on CentML using a pre-built Docker image or by building and pushing your own.
+This guide helps you deploy a FLUX endpoint on CentML using a pre-built Docker image or by building and pushing your own.
 
 ## Docker Image
 
