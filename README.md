@@ -34,6 +34,7 @@ apps that showcase advanced and general features integrating with CentML endpoin
 ![text to speech](images/image.png)
 
 - image generation
+![FLUX image generation](general-apps/general-inference/FLUX/gradio/generation.gif)
 
 ![image generation](images/image-1.png)
 
