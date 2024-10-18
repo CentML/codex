@@ -6,9 +6,11 @@ A collection of integration examples for CentML. This repository serves as a res
 chat-apps directory contains various examples of chat implementations leveraging CentML API. 
 
 - bash 
+
 ![chat.sh](images/image-3.png)
 
 - swift
+
 ![alt text](images/image-4.png)
 
 - gradio
