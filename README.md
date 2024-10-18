@@ -5,11 +5,8 @@ A collection of integration examples for CentML. This repository serves as a res
 # General Apps
 apps that showcase advanced and general features integrating with CentML endpoints / compute / llm serving
 
-- text to speech
-
-![text to speech](images/image.png)
-
 - image generation
+
 ![FLUX image generation](general-apps/general-inference/FLUX/gradio/generation.gif)
 
 ![image generation](images/image-1.png)
@@ -17,6 +14,12 @@ apps that showcase advanced and general features integrating with CentML endpoin
 - llm debate
 
 ![llm debate](images/image-2.png)
+
+- text to speech
+
+![text to speech](images/image.png)
+
+
 
 # Chat Apps
 chat-apps directory contains various examples of chat implementations leveraging CentML API. 
