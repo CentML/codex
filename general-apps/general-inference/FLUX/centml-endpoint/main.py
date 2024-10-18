@@ -1,23 +1,34 @@
-## sd_endpoint.py
-import torch
 from fastapi import FastAPI
 from pydantic import BaseModel
-from diffusers import StableDiffusion3Pipeline
+from diffusers import FluxPipeline
 from typing import Optional
 from PIL import Image
 import io
 import base64
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
+import torch
 
-# Load the Stable Diffusion 3 model from stability.ai
-pipe = StableDiffusion3Pipeline.from_pretrained(
-    "stabilityai/stable-diffusion-3-medium-diffusers",
-    torch_dtype=torch.float16,
-    safety_checker=None
-).to("cuda")
+# Load the Flux model from black-forest-labs with mixed precision for GPU optimization
+pipe = FluxPipeline.from_pretrained(
+    "black-forest-labs/FLUX.1-dev",
+    torch_dtype=torch.float16  # Use float16 for mixed precision (reduces memory usage and speeds up inference)
+).to("cuda" if torch.cuda.is_available() else "cpu")
+
+# Optionally, enable model CPU offload to save VRAM (uncomment if needed)
+# pipe.enable_model_cpu_offload()
 
 # Define the FastAPI app
 app = FastAPI()
+
+# Add CORS middleware to allow requests from web front-ends (like HTML or JS apps)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins, you can restrict this in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define the request body model
 class ImagePrompt(BaseModel):

@@ -1,4 +1,4 @@
-# Stable Diffusion Endpoint for CentML
+# FLUX Endpoint for CentML
 
 This guide helps you deploy a Stable Diffusion endpoint on CentML using a pre-built Docker image or by building and pushing your own.
 
@@ -31,19 +31,24 @@ Access the CentML dashboard at https://app.centml.com.
 From the Home page, go to General Inference to set up the deployment.
 3. Fill in Deployment Details
 Provide the necessary details, including:
+
 - Docker image name
+
 ```bash
 vagias/base-api # optional replace with your image
 ```
 - Tag (e.g., v1.0)
+
 ```bash
 v1.0
 ```
 - Port number
+
 ```bash
 8000
 ```
 - Health check path
+
 ```bash
 /docs
 ```
@@ -75,6 +80,6 @@ Once deployed, you can interact with the endpoint via:
 - curl commands
 - The included apps and examples
 
-Use the provided URL to send requests and generate images with Stable Diffusion.
+Use the provided URL to send requests and generate images with FLUX.
 
 This version adds clarity and a more polished flow. Let me know if you’d like to include more details or examples for interacting with the endpoint!
