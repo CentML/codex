@@ -1,5 +1,6 @@
 # Image Generation App with Gradio
-![alt text](image.png)
+
+![alt text](generation.gif)
 
 ## Requirements 
 ```bash

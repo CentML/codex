@@ -43,7 +43,7 @@ interface = gr.Interface(
     fn=generate_image_from_api,
     inputs="text",
     outputs="image",
-    title="Stable Diffusion Image Generator"
+    title="FLUX Image Generator"
 )
 
 if __name__ == "__main__":
