@@ -29,9 +29,14 @@ chat-apps directory contains various examples of chat implementations leveraging
 # General Apps
 apps that showcase advanced and general features integrating with CentML endpoints / compute / llm serving
 
+- text to speech
 
 ![text to speech](images/image.png)
 
+- image generation
+
 ![image generation](images/image-1.png)
+
+- llm debate
 
 ![llm debate](images/image-2.png)
