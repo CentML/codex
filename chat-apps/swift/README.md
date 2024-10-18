@@ -1,7 +1,7 @@
 # Swift Playground AI Chat App
 
 This project demonstrates how to build a simple SwiftUI-based chat interface that communicates with the CentML API for AI-generated responses. The app streams responses from the AI in real-time, creating an interactive chat experience.
-
+![swift playground](image.png)
 ## Setup Instructions
 
 1. Create a New Swift Playground App

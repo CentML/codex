@@ -4,6 +4,8 @@ This Gradio-based web app allows you to interact with the CentML Serverless API 
 
 The default behavior is ModelA takes a Far Left stance and ModelB takes a Far Right stance. 
 
+![alt text](image.png)
+
 ## Features
 
 - **Real-time Chat**: User enters a topic prompt and then ModelA and ModelB will debate the topic in realtime.
