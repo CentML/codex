@@ -3,7 +3,7 @@ import requests
 import gradio as gr
 
 # Placeholder API URL for Text-to-Speech (replace with actual URL)
-TTS_URL = "https://{ENDPOINT_URL}/text-to-speech/" #REPLACE ENDPOINT_URL
+TTS_URL = "https://tts.user-1352.c-01.centml.com/text-to-speech/" #REPLACE ENDPOINT_URL
 
 # Function to send text to the TTS API
 def text_to_speech(text, voice):
