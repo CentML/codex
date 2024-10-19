@@ -15,6 +15,10 @@ apps that showcase advanced and general features integrating with CentML endpoin
 
 ![llm debate](images/image-2.png)
 
+- battlesnake
+
+![battlesnake](general-apps/general-inference/battlesnake/battle.gif)
+
 - text to speech
 
 ![text to speech](images/image.png)
