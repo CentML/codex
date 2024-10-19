@@ -1,9 +1,14 @@
 # Battlesnake CentML Endpoint
 
+![alt text](battle.gif)
+
+
 ## Snake
 
 - examine main.py a simple snake, and main-2.py a more advanced snake 
 - make any changes you want to see
+
+
 
 ## Docker 
 - Build the docker container
