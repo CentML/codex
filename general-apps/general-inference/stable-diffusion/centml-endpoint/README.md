@@ -33,7 +33,7 @@ From the Home page, go to General Inference to set up the deployment.
 Provide the necessary details, including:
 - Docker image name
 ```bash
-vagias/base-api # optional replace with your image
+vagias/base-api #  replace with your image
 ```
 - Tag (e.g., v1.0)
 ```bash

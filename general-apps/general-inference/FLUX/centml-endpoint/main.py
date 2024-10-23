@@ -33,7 +33,7 @@ app.add_middleware(
 # Define the request body model
 class ImagePrompt(BaseModel):
     prompt: str
-    num_inference_steps: Optional[int] = 35
+    num_inference_steps: Optional[int] = 25
     guidance_scale: Optional[float] = 7.0
 
 # Function to convert image to base64

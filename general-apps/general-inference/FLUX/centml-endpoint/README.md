@@ -13,14 +13,14 @@ This guide helps you deploy a FLUX endpoint on CentML using a pre-built Docker i
 
 To build and push the image using buildx (for multi-platform support):
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 -t {docker-username}/sd3-centml:v1.0 --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t {docker-username}/flux-centml:v1.0 --push .
 ```
 
 - For Linux
 
 To build and push the image:
 ```bash
-docker build -t {docker-username}/sd3-centml:v1.0 --push .
+docker build -t {docker-username}/flux-centml:v1.0 --push .
 ```
 
 ## Deploying on CentML
@@ -35,7 +35,7 @@ Provide the necessary details, including:
 - Docker image name
 
 ```bash
-vagias/base-api # optional replace with your image
+username/base-api # replace with your image
 ```
 - Tag (e.g., v1.0)
 
