@@ -1,5 +1,3 @@
-Here’s a basic README.md template for your Streamlit application:
-
 # Meta-Llama-3-8B-Instruct Streamlit Chat
 
 This repository contains a Streamlit application that allows users to chat with CentML's Serverless API. The application streams responses in real-time, displaying a conversation-style interface.

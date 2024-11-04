@@ -11,7 +11,7 @@ import uvicorn
 
 # Load the Stable Diffusion 3 model from stability.ai
 pipe = StableDiffusion3Pipeline.from_pretrained(
-    "stabilityai/stable-diffusion-3.5-large-turbo",
+    "stabilityai/stable-diffusion-3.5-large",
     torch_dtype=torch.float16,
     safety_checker=None
 ).to("cuda")
