@@ -1,5 +1,5 @@
 
-# README: Employee Profile JSON Generator
+# README: JSON Schema Usage Example
 
 ## Overview
 
