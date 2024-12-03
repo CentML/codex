@@ -33,7 +33,7 @@ http://localhost:7860
 1. Enter chat-apps/gradio directory
 
 ```bash
-   cd chat-apps/gradio-centml-chat
+   cd chat-apps/gradio
 ```
 
 2.	Set up a virtual environment (optional but recommended):
