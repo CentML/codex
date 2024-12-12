@@ -11,10 +11,10 @@ def measure_llm_performance():
     """
 
     
-    api_key = os.getenv("CENTML_API_KEY", "api-key")
-    base_hostname = os.getenv("CENTML_API_HOSTNAME", "tpu-demo.5d87d85b.c-03.centml.com") 
-    base_url = f"http://{base_hostname}/openai/v1"
-    model_name = os.getenv("CENTML_MODEL_NAME", "meta-llama/Meta-Llama-3.1-70B-Instruct")
+    api_key = os.getenv("CENTML_API_KEY", "wF5JsDO-kYbFK1Zh0BwRNd-77UZQwXODx-qtIvLFfJk")
+    base_hostname = os.getenv("CENTML_API_HOSTNAME", "api.centml.com") 
+    base_url = f"https://{base_hostname}/openai/v1"
+    model_name = os.getenv("CENTML_MODEL_NAME", "meta-llama/Llama-3.1-405B-Instruct-FP8")
     guided_decoding_backend = "outlines"
 
     
