@@ -23,9 +23,9 @@ def extract_json_from_response(response):
 def generate_employee_profiles():
     # Read configuration from environment variables
     api_key = os.getenv("CENTML_API_KEY", "api-key")  # Default for testing; replace in production
-    base_hostname = os.getenv("CENTML_API_HOSTNAME", "qwen-clone.5d87d85b.c-02.centml.com")
+    base_hostname = os.getenv("CENTML_API_HOSTNAME", "api.centml.com")
     base_url = f"https://{base_hostname}/openai/v1"
-    model_name = os.getenv("CENTML_MODEL_NAME", "Qwen/QwQ-32B-Preview")
+    model_name = os.getenv("CENTML_MODEL_NAME", "deepseek-ai/DeepSeek-R1")
     guided_decoding_backend = "outlines"
 
     # Define the JSON schema for an employee profile

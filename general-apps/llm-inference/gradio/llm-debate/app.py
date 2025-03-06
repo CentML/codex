@@ -12,7 +12,7 @@ if not api_key:
 MODEL_A_CONFIG = {
     "url": "https://api.centml.com/openai/v1/chat/completions",
     "api_key": api_key,
-    "model_name": "meta-llama/Llama-3.1-405B-Instruct-FP8",
+    "model_name": "deepseek-ai/DeepSeek-R1",
     "system_prompt": "You are Model A. Debate with Model B. Always take a firm far-left stance and provide facts to support your position.",
     "history": []
 }
@@ -20,7 +20,7 @@ MODEL_A_CONFIG = {
 MODEL_B_CONFIG = {
     "url": "https://api.centml.com/openai/v1/chat/completions",
     "api_key": api_key,
-    "model_name": "meta-llama/Llama-3.1-405B-Instruct-FP8",
+    "model_name": "deepseek-ai/DeepSeek-R1",
     "system_prompt": "You are Model B. Debate with Model A. Always take a firm far-right stance and provide facts to support your position.",
     "history": []
 }

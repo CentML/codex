@@ -19,7 +19,7 @@ def send_message(user_input):
     }
     
     data = {
-        "model": "meta-llama/Llama-3.1-405B-Instruct-FP8",
+        "model": "deepseek-ai/DeepSeek-R1",
         "messages": [
             {"role": "system", "content": "You are helpful."},
             {"role": "user", "content": user_input}

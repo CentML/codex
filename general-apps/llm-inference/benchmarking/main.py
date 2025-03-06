@@ -11,10 +11,10 @@ def measure_llm_performance():
     """
 
     
-    api_key = os.getenv("CENTML_API_KEY", "wF5JsDO-kYbFK1Zh0BwRNd-77UZQwXODx-qtIvLFfJk")
+    api_key = os.getenv("CENTML_API_KEY", "replace-with-key")
     base_hostname = os.getenv("CENTML_API_HOSTNAME", "api.centml.com") 
     base_url = f"https://{base_hostname}/openai/v1"
-    model_name = os.getenv("CENTML_MODEL_NAME", "meta-llama/Llama-3.1-405B-Instruct-FP8")
+    model_name = os.getenv("CENTML_MODEL_NAME", "deepseek-ai/DeepSeek-R1")
     guided_decoding_backend = "outlines"
 
     
