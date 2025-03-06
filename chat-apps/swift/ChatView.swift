@@ -13,7 +13,7 @@ class ChatViewModel: ObservableObject {
     
     let apiKey: String =  "Enter_your_API_key_here"
     let baseUrl: String = "https://api.centml.com/openai/v1/chat/completions"
-    let modelName: String = "meta-llama/Llama-3.1-405B-Instruct-FP8"
+    let modelName: String = "deepseek-ai/DeepSeek-R1"
     
     // Function to send a message and receive a response via streaming
     func sendMessage() {

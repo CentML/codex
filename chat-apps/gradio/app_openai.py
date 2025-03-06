@@ -17,7 +17,7 @@ client = OpenAI(
 def send_message(user_input):
     # Send the request to the CentML API with streaming enabled
     completion = client.chat.completions.create(
-        model="meta-llama/Llama-3.1-405B-Instruct-FP8",
+        model="deepseek-ai/DeepSeek-R1",
         messages=[
             {"role": "system", "content": "You are helpful."},
             {"role": "user", "content": user_input}
