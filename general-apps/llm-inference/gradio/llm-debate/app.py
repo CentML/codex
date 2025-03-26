@@ -8,20 +8,31 @@ api_key = os.getenv("CENTML_API_KEY")  # Ensure the CENTML_API_KEY environment v
 if not api_key:
     raise ValueError("CENTML_API_KEY environment variable is not set.")
 
+URLS = [
+    "https://api.centml.com/openai/v1/chat/completions",
+    "https://qwen25.8ebc944a.c-07.centml.com/openai/v1/chat/completions",
+]
+
+MODELS = [
+    "meta-llama/Llama-3.2-3B-Instruct",
+    "deepseek-ai/DeepSeek-V3-0324",
+    "Qwen/Qwen2.5-7B-Instruct",
+]
+
 # Define the API details for Model A and Model B
 MODEL_A_CONFIG = {
-    "url": "https://api.centml.com/openai/v1/chat/completions",
+    "url": URLS[0],
     "api_key": api_key,
-    "model_name": "deepseek-ai/DeepSeek-R1",
-    "system_prompt": "You are Model A. Debate with Model B. Always take a firm far-left stance and provide facts to support your position.",
+    "model_name": MODELS[1],
+    "system_prompt": "You are Mark Carney. Debate with Pierre Poilievre. Always take a firm left stance, use your personal experience, and provide facts to support your position.",
     "history": []
 }
 
 MODEL_B_CONFIG = {
-    "url": "https://api.centml.com/openai/v1/chat/completions",
+    "url": URLS[0],
     "api_key": api_key,
-    "model_name": "deepseek-ai/DeepSeek-R1",
-    "system_prompt": "You are Model B. Debate with Model A. Always take a firm far-right stance and provide facts to support your position.",
+    "model_name": MODELS[1],
+    "system_prompt": "You are Pierre Poilievre. Debate with Mark Carney. Always take a firm right stance, use your personal experience, and provide facts to support your position.",
     "history": []
 }
 
@@ -31,7 +42,7 @@ def send_message(config, user_input):
         "Authorization": f"Bearer {config['api_key']}",
         "Content-Type": "application/json"
     }
-    
+
     # Prepare the conversation messages including the system prompt and user message
     config['history'].append({"role": "user", "content": user_input})
     messages = [{"role": "system", "content": config['system_prompt']}] + config['history']
@@ -39,7 +50,7 @@ def send_message(config, user_input):
     data = {
         "model": config["model_name"],
         "messages": messages,
-        "max_tokens": 200,
+        "max_tokens": 8192,
         "temperature": 0.7,
         "top_p": 1,
         "n": 1,
@@ -83,7 +94,7 @@ def debate(user_input, chat_history, num_rounds):
         for partial_response in send_message(MODEL_A_CONFIG, user_input):
             model_a_response = partial_response
             # Update the last message with Model A's streaming response
-            chat_history[-1][1] = f"Model A:\n Topic: {user_input}\n {model_a_response}"
+            chat_history[-1][1] = f"Model A:\n {model_a_response}"
             yield chat_history, ""
 
         # Append the full response from Model A into history
@@ -93,13 +104,10 @@ def debate(user_input, chat_history, num_rounds):
         model_b_response = ""
 
         # Streaming response from Model B (responding to Model A)
+        chat_history.append([None, None])
         for partial_response in send_message(MODEL_B_CONFIG, model_a_response):
             model_b_response = partial_response
-            # Update the last message with Model B's streaming response (no extra bubbles)
-            if len(chat_history) > 1 and chat_history[-1][0].startswith("Model B"):
-                chat_history[-1][0] = f"Model B \n Topic: {user_input}\n {model_b_response}"
-            else:
-                chat_history.append([f"Model B: {model_b_response}", None])
+            chat_history[-1][0] = f"Model B:\n {model_b_response}"
             yield chat_history, ""
 
         # Append the full response from Model B into history
@@ -114,7 +122,7 @@ with gr.Blocks() as demo:
 
     chat_history = gr.Chatbot(label="Debate History")
     user_input = gr.Textbox(label="Your message", placeholder="Enter the debate topic here...")
-    rounds_slider = gr.Slider(minimum=1, maximum=3, step=1, value=1, label="Number of Debate Rounds")
+    rounds_slider = gr.Slider(minimum=1, maximum=10, step=1, value=1, label="Number of Debate Rounds")
     send_button = gr.Button("Send")
 
     # Send message and update the chat interface with streaming
