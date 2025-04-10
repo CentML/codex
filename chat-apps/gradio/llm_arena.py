@@ -169,7 +169,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
 
     # Container for model outputs using Column for separation
     output_boxes = []
-    for i in range(7):  # Adjust based on number of models
+    for i in range(10):  # Adjust based on number of models
         with gr.Row():
             with gr.Column():
                 with gr.Group(visible=True) as group:
@@ -222,7 +222,9 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
             )
             
             # Generate outputs first
-            outputs, options = generate_outputs(prompt)
+            outputs, _ = generate_outputs(prompt)
+            # Recompute options based on the number of responses
+            options = [f"Option {i+1}" for i in range(len(outputs))]
             
             # Initialize results array for all components
             results = []
@@ -238,11 +240,11 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
                         visible=True
                     ))
                 else:
-                    results.append(gr.update(visible=False))
+                    results.append(gr.update(value="", visible=False))
             
-            # Add radio, state, and final status
+            # Update radio choices to use only the valid options
             results.extend([
-                gr.update(choices=options, value=None),  # Radio choices
+                gr.update(choices=options, value=None),  # Update radio with correct number of options
                 json.dumps(outputs),                     # State
                 "✅ Generation complete!"                # Final status
             ])
