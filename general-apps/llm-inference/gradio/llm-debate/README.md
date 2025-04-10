@@ -17,16 +17,17 @@ Before running the app, ensure that you have the following:
 
 1. **Python 3.10+** installed on your machine.
 2. **Gradio** and other necessary Python libraries. You can install these via `pip` (see instructions below).
-3. If one of the models (or both as in the default), are serverless models, A valid **CentML API key**. The API key should be stored in an environment variable called `CENTML_API_KEY`.
+3. If one of the models (or both as in the default), are serverless models, you need to provide a valid **CentML API key**. The API key should be stored in environment variables called `MODEL_A_API_KEY` and `MODEL_B_API_KEY`.
 
 ## Usage
 ### Docker File
 
 1. Docker
 ```bash
-export CENTML_API_KEY="your-api-key-here"
+export MODEL_A_API_KEY="your-api-key-here"
+export MODEL_B_API_KEY="your-api-key-here"
 docker build -t gradio-app .   
-docker run -p 7860:7860 -e CENTML_API_KEY=${CENTML_API_KEY} gradio-app
+docker run -p 7860:7860 -e MODEL_A_API_KEY=${MODEL_A_API_KEY} -e MODEL_B_API_KEY=${MODEL_B_API_KEY} gradio-app
 ```
 
 2. Open Browser
@@ -57,7 +58,8 @@ pip install gradio requests
 
 4.	Set the CentML API key as an environment variable:
 ```bash
-export CENTML_API_KEY="your-api-key-here"
+export MODEL_A_API_KEY="your-api-key-here"
+export MODEL_B_API_KEY="your-api-key-here"
 ```
 Replace "your-api-key-here" with your actual CentML API key.
 
@@ -80,7 +82,7 @@ This will launch a local Gradio interface in your browser. If the app doesn’t 
 
 ## Troubleshooting
 
-- Error Connecting to API: If you encounter an error connecting to the CentML API, ensure that your API key is valid and set in the environment variable CENTML_API_KEY.
+- Error Connecting to API: If you encounter an error connecting to the CentML API, ensure that your API key is valid and set in the environment variables `MODEL_A_API_KEY` and `MODEL_B_API_KEY`.
 - Python Version: Ensure you are using Python 3.10 or higher.
 - Dependencies: Make sure you have installed all the necessary dependencies (Gradio and Requests).
 

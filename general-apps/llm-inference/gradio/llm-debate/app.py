@@ -1,14 +1,17 @@
 import os
+import time
 import requests
 import json
 import gradio as gr
 
 # Use environment variable for the API key
-api_key_name = "CENTML_API_KEY"
-api_key = os.getenv(api_key_name)
+model_a_api_key = os.getenv("MODEL_A_API_KEY")
+model_b_api_key = os.getenv("MODEL_B_API_KEY")
 # Ensure the CENTML_API_KEY environment variable is set
-if not api_key:
-    raise ValueError(f"{api_key_name} environment variable is not set.")
+if not model_a_api_key:
+    raise ValueError("MODEL_A_API_KEY environment variable is not set.")
+if not model_b_api_key:
+    raise ValueError("MODEL_B_API_KEY environment variable is not set.")
 
 model_a_url = os.getenv(
     "MODEL_A_URL", "https://api.centml.com/openai/v1/chat/completions"
@@ -27,7 +30,7 @@ model_b_human_name = os.getenv("HUMAN_B", "Pierre Poilievre")
 # Define the API details for Model A and Model B
 MODEL_A_CONFIG = {
     "url": model_a_url,
-    "api_key": api_key,
+    "api_key": model_a_api_key,
     "model_name": model_a_model_name,
     "system_prompt": f"You are {model_a_human_name}. Debate with {model_b_human_name}. "
     "Always take a firm left stance, use your personal experience, and provide facts to"
@@ -37,7 +40,7 @@ MODEL_A_CONFIG = {
 
 MODEL_B_CONFIG = {
     "url": model_b_url,
-    "api_key": api_key,
+    "api_key": model_b_api_key,
     "model_name": model_b_model_name,
     "system_prompt": f"You are {model_b_human_name}. Debate with {model_a_human_name}. "
     "Always take a firm right stance, use your personal experience, and provide facts "
@@ -74,6 +77,9 @@ def send_message(config, user_input):
 
     try:
         # Send the request and stream the response
+        ttft = None  # Time (in s) to first token.
+        tps = None  # Tokens per second.
+        tic = time.perf_counter()
         with requests.post(
             config["url"], headers=headers, json=data, stream=True
         ) as response:
@@ -81,14 +87,20 @@ def send_message(config, user_input):
             assistant_response = ""
             for chunk in response.iter_lines(decode_unicode=True):
                 if chunk and chunk.startswith("data: "):
+                    if not assistant_response:
+                        ttft = time.perf_counter() - tic
+                    else:
+                        tps = 1.0 / (time.perf_counter() - tic)
                     chunk_data = chunk[len("data: ") :]
                     if chunk_data != "[DONE]":
-                        content = json.loads(chunk_data)["choices"][0]["delta"].get(
-                            "content", ""
-                        )
+                        delta = json.loads(chunk_data)["choices"][0]["delta"]
+                        content = delta.get("content", "")
+                        if not content:
+                            content = delta.get("reasoning_content", "")
                         if content:  # Only concatenate if content is not None
                             assistant_response += content
-                            yield assistant_response  # Stream response back to Gradio
+                            yield assistant_response, ttft, tps  # Stream response back to Gradio
+                            tic = time.perf_counter()
     except requests.exceptions.RequestException as e:
         yield f"Error connecting to server: {e}"
 
@@ -105,17 +117,17 @@ def debate(user_input, chat_history, num_rounds):
     model_a_response = ""
     model_b_response = ""  # Reset Model B's response here
 
+    model_a_signature = f"{model_a_human_name} ({model_a_model_name} @ {model_a_url})"
+    model_b_signature = f"{model_b_human_name} ({model_b_model_name} @ {model_b_url})"
+
     # Debate for the specified number of rounds
     for round_num in range(int(num_rounds)):
         # Streaming response from Model A
-        for partial_response in send_message(MODEL_A_CONFIG, user_input):
+        for partial_response, ttft, tps in send_message(MODEL_A_CONFIG, user_input):
             model_a_response = partial_response
             # Update the last message with Model A's streaming response
-            chat_history[-1][1] = (
-                f"{model_a_human_name} ({model_a_model_name} @ {model_a_url}):\n "
-                f"{model_a_response}"
-            )
-            yield chat_history, ""
+            chat_history[-1][1] = f"{model_a_signature}:\n{model_a_response}"
+            yield chat_history, "", f"{model_a_signature} : {ttft}", f"{model_a_signature} : {tps}"
 
         # Append the full response from Model A into history
         MODEL_A_CONFIG["history"].append(
@@ -127,13 +139,12 @@ def debate(user_input, chat_history, num_rounds):
 
         # Streaming response from Model B (responding to Model A)
         chat_history.append([None, None])
-        for partial_response in send_message(MODEL_B_CONFIG, model_a_response):
+        for partial_response, ttft, tps in send_message(
+            MODEL_B_CONFIG, model_a_response
+        ):
             model_b_response = partial_response
-            chat_history[-1][0] = (
-                f"{model_b_human_name} ({model_b_model_name} @ {model_b_url}):\n "
-                f"{model_b_response}"
-            )
-            yield chat_history, ""
+            chat_history[-1][0] = f"{model_b_signature}\n{model_b_response}"
+            yield chat_history, "", f"{model_b_signature} : {ttft}", f"{model_b_signature} : {tps}"
 
         # Append the full response from Model B into history
         MODEL_B_CONFIG["history"].append(
@@ -156,12 +167,14 @@ with gr.Blocks() as demo:
         minimum=1, maximum=10, step=1, value=1, label="Number of Debate Rounds"
     )
     send_button = gr.Button("Send")
+    ttft = gr.Textbox(label="Time (in seconds) to first token")
+    tps = gr.Textbox(label="Tokens per second")
 
     # Send message and update the chat interface with streaming
     send_button.click(
         debate,
         inputs=[user_input, chat_history, rounds_slider],
-        outputs=[chat_history, user_input],
+        outputs=[chat_history, user_input, ttft, tps],
         queue=True,  # Ensure responses are queued in order
     )
 
