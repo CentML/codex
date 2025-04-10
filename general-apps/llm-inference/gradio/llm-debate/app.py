@@ -70,6 +70,7 @@ def send_message(config, user_input):
         "top_p": 1,
         "n": 1,
         "stream": True,  # Enable streaming
+        "stream_options": {"include_usage": True},
         "frequency_penalty": 0,
         "presence_penalty": 0,
         "stop": [],
@@ -78,6 +79,7 @@ def send_message(config, user_input):
     try:
         # Send the request and stream the response
         ttft = None  # Time (in s) to first token.
+        elapsed = None
         tps = None  # Tokens per second.
         tic = time.perf_counter()
         with requests.post(
@@ -86,21 +88,28 @@ def send_message(config, user_input):
             response.raise_for_status()  # Check for HTTP errors
             assistant_response = ""
             for chunk in response.iter_lines(decode_unicode=True):
-                if chunk and chunk.startswith("data: "):
-                    if not assistant_response:
-                        ttft = time.perf_counter() - tic
-                    else:
-                        tps = 1.0 / (time.perf_counter() - tic)
-                    chunk_data = chunk[len("data: ") :]
-                    if chunk_data != "[DONE]":
-                        delta = json.loads(chunk_data)["choices"][0]["delta"]
-                        content = delta.get("content", "")
-                        if not content:
-                            content = delta.get("reasoning_content", "")
-                        if content:  # Only concatenate if content is not None
-                            assistant_response += content
-                            yield assistant_response, ttft, tps  # Stream response back to Gradio
-                            tic = time.perf_counter()
+                if not chunk or not chunk.startswith("data: "):
+                    continue
+                elapsed = time.perf_counter() - tic
+                if not assistant_response:
+                    ttft = elapsed
+                chunk_data = chunk[len("data: ") :]
+                if chunk_data == "[DONE]":
+                    continue
+                chunk_data = json.loads(chunk_data)
+                choices = chunk_data["choices"]
+                if not choices:
+                    continue
+                delta = choices[0]["delta"]
+                content = delta.get("content", "")
+                if not content:
+                    content = delta.get("reasoning_content", "")
+                if not content:
+                    continue
+                if chunk_data["usage"]:
+                    tps = chunk_data["usage"]["completion_tokens"] / elapsed
+                assistant_response += content
+                yield assistant_response, ttft, tps  # Stream response back to Gradio
     except requests.exceptions.RequestException as e:
         yield f"Error connecting to server: {e}"
 
@@ -128,6 +137,7 @@ def debate(user_input, chat_history, num_rounds):
             # Update the last message with Model A's streaming response
             chat_history[-1][1] = f"{model_a_signature}:\n{model_a_response}"
             yield chat_history, "", f"{model_a_signature} : {ttft}", f"{model_a_signature} : {tps}"
+        print(f"{model_a_signature} : {ttft} | {model_a_signature} : {tps}")
 
         # Append the full response from Model A into history
         MODEL_A_CONFIG["history"].append(
@@ -145,6 +155,7 @@ def debate(user_input, chat_history, num_rounds):
             model_b_response = partial_response
             chat_history[-1][0] = f"{model_b_signature}\n{model_b_response}"
             yield chat_history, "", f"{model_b_signature} : {ttft}", f"{model_b_signature} : {tps}"
+        print(f"{model_b_signature} : {ttft} | {model_b_signature} : {tps}")
 
         # Append the full response from Model B into history
         MODEL_B_CONFIG["history"].append(
