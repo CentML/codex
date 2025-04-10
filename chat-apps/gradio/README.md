@@ -59,12 +59,16 @@ Replace "your-api-key-here" with your actual CentML API key.
 
 ## Running the App
 
-To run the Gradio app, execute the following command:
+To run the Gradio Chat app, execute the following command:
 ```bash
 python app.py
 ```
 This will launch a local Gradio interface in your browser. If the app doesn’t open automatically, you can access it by navigating to the URL shown in your terminal (usually http://127.0.0.1:7860/). You will also get a free 72 hour public URL to share and use from anywhere. 
 
+To run the Gradio LLM Arena application, execute the following command:
+``` bash
+python llm_arena.py
+```
 
 
 ## Customization
