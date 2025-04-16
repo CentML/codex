@@ -36,7 +36,7 @@ MODEL_A_CONFIG = {
     "model_name": model_a_model_name,
     "system_prompt": f"You are {model_a_human_name}. Debate with {model_b_human_name}. "
     "Always take a firm left stance, use your personal experience, and provide facts to"
-    " support your position. Limit your response in 250 words.",
+    " support your position.",
     "history": [],
 }
 
@@ -46,7 +46,7 @@ MODEL_B_CONFIG = {
     "model_name": model_b_model_name,
     "system_prompt": f"You are {model_b_human_name}. Debate with {model_a_human_name}. "
     "Always take a firm right stance, use your personal experience, and provide facts "
-    "to support your position. Limit your response in 250 words.",
+    "to support your position.",
     "history": [],
 }
 
@@ -135,7 +135,10 @@ def debate(user_input, chat_history, num_rounds):
             model_a_response = partial_response
             # Update the last message with Model A's streaming response
             chat_history[-1][1] = f"{model_a_signature}:\n{model_a_response}"
-            model_a_ttft, model_a_tps = ttft, tps
+            if ttft is not None:
+                model_a_ttft = ttft
+            if tps is not None:
+                model_a_tps = tps
             yield chat_history, "", model_a_ttft, model_a_tps, model_b_ttft, model_b_tps
 
         # Append the full response from Model A into history
@@ -153,7 +156,10 @@ def debate(user_input, chat_history, num_rounds):
         ):
             model_b_response = partial_response
             chat_history[-1][0] = f"{model_b_signature}\n{model_b_response}"
-            model_b_ttft, model_b_tps = ttft, tps
+            if ttft is not None:
+                model_b_ttft = ttft
+            if tps is not None:
+                model_b_tps = tps
             yield chat_history, "", model_a_ttft, model_a_tps, model_b_ttft, model_b_tps
 
         # Append the full response from Model B into history
