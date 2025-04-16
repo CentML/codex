@@ -103,15 +103,10 @@ def send_message(config, user_input):
                     continue
                 chunk_data = json.loads(chunk_data)
                 choices = chunk_data["choices"]
-                if not choices:
-                    continue
-                delta = choices[0]["delta"]
+                delta = choices[0]["delta"] if choices else {}
                 content = delta.get("content", "")
                 if not content:
                     content = delta.get("reasoning_content", "")
-                if not content:
-                    continue
-
                 if "usage" in chunk_data and chunk_data["usage"]:
                     tps = chunk_data["usage"]["completion_tokens"] / elapsed
                 assistant_response += content
